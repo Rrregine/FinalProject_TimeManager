@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_taskFragment"
             app:destination="@id/taskFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/taskFragment"
@@ -22,6 +25,15 @@
         tools:layout="@layout/fragment_task_list" >
         <action
             android:id="@+id/action_taskFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.wang.finalproject_calendar.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_homeFragment2"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
