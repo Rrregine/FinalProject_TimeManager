@@ -10,9 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FinalProject_Calendar"
-        tools:targetApi="31">
-        <activity
+
+        tools:targetApi="31"
+        android:theme="@style/AppTheme">
+
+    <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

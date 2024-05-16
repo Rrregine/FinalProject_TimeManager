@@ -1,0 +1,26 @@
+<resources>
+    <!-- Light mode -->
+    <!-- Light mode -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/bluebright</item> <!-- Use your desired color here -->
+        <item name="colorPrimaryDark">@color/bluepastel</item> <!-- Use your desired color here -->
+        <item name="colorAccent">@color/purplepastel</item> <!-- Use your desired color here -->
+
+        <item name="buttonStyle">@style/AppButton</item>
+
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <!-- Dark mode -->
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/darkGray</item> <!-- Use dark mode color here -->
+        <item name="colorPrimaryDark">@color/darkBlue</item> <!-- Use dark mode color here -->
+        <item name="colorAccent">@color/darkPink</item> <!-- Use dark mode color here -->
+
+        <item name="android:windowBackground">@color/black</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@color/bluepastel</item>
+    </style>
+</resources>

@@ -168,29 +168,6 @@ class HomeFragment : Fragment() {
         this.selectTimeTextView.text = ""
     }
 
-//    private fun onClickSubmit(
-//        titleEditText: EditText,
-//        detailsEditText: EditText,
-//        dateTextView: TextView,
-//        timeTextView: TextView,
-//        color: String
-//    ) {
-//        // Get user input
-//        val title = titleEditText.text.toString()
-//        val details = detailsEditText.text.toString()
-//        val date = dateTextView.text.toString()
-//        val time = timeTextView.text.toString()
-//
-//        // Insert data into database
-//        dbHelper.addPerson(title, details, date, time, color)
-//
-//        // Clear input fields
-//        titleEditText.text.clear()
-//        detailsEditText.text.clear()
-//        dateTextView.text = ""
-//        timeTextView.text = ""
-//    }
-
 
     private fun navigateToTaskListFragment() {
         findNavController().navigate(R.id.action_homeFragment_to_taskFragment)
