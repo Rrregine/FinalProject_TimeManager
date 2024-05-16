@@ -1,6 +1,8 @@
 package com.wang.finalproject_calendar
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -109,8 +113,6 @@ class TaskFragment : Fragment() {
         val mode = if (isDarkModeEnabled) "Dark Mode" else "Light Mode"
         Log.d("ModeChange", "Mode changed to: $mode")
     }
-
-
 
     private fun navigateToHomeFragment() {
         findNavController().navigate(R.id.action_taskFragment_to_homeFragment) //to add fragment
