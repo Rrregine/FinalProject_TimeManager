@@ -10,10 +10,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.wang.finalproject_calendar.placeholder.PlaceholderContent
 class TaskFragment : Fragment() {
 
     private var columnCount = 1
+
+    private lateinit var addTask: Button
+    private lateinit var updateTask: Button
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: MyTaskRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,28 +36,56 @@ class TaskFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_task_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyTaskRecyclerViewAdapter(PlaceholderContent.ITEMS)
-            }
+        // Set up RecyclerView
+        recyclerView = view.findViewById(R.id.recyclerViewList)
+        adapter = MyTaskRecyclerViewAdapter(readEventsFromDatabase())
+        recyclerView.layoutManager = when {
+            columnCount <= 1 -> LinearLayoutManager(context)
+            else -> GridLayoutManager(context, columnCount)
+        }
+        recyclerView.adapter = adapter
+
+        addTask = view.findViewById(R.id.addEventButton)
+        updateTask = view.findViewById(R.id.updateEventButton)
+
+        addTask.setOnClickListener {
+            navigateToHomeFragment()
         }
 
-        val backButton = view.findViewById<Button>(R.id.backButton)
-
-        backButton.setOnClickListener {
-            navigateToHomeFragment()
+        updateTask.setOnClickListener {
+            navigateToRegistrationFragment()
         }
 
         return view
     }
 
     private fun navigateToHomeFragment() {
-        findNavController().navigate(R.id.action_taskFragment_to_homeFragment)
+        findNavController().navigate(R.id.action_taskFragment_to_homeFragment) //to add fragment
+    }
+
+    private fun navigateToRegistrationFragment() {
+        findNavController().navigate(R.id.action_taskFragment_to_registrationFragment) //to update fragment
+    }
+
+    private fun readEventsFromDatabase(): ArrayList<Task> {
+        val dbHelper = DatabaseHelper(requireContext())
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM tasks", null)
+        val data = ArrayList<Task>()
+        with(cursor) {
+            while (moveToNext()) {
+                val id = getString(getColumnIndexOrThrow("id"))
+                val title = getString(getColumnIndexOrThrow("title"))
+                val details = getString(getColumnIndexOrThrow("details"))
+                val date = getString(getColumnIndexOrThrow("date"))
+                val time = getString(getColumnIndexOrThrow("time"))
+                val color = getString(getColumnIndexOrThrow("color"))
+                val task = Task(id, title, details, date, time, color)
+                data.add(task)
+            }
+        }
+        cursor.close()
+        return data
     }
 
     companion object {

@@ -24,9 +24,6 @@
         <action
             android:id="@+id/action_homeFragment_to_taskFragment"
             app:destination="@id/taskFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_colorFragment"
-            app:destination="@id/colorFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
@@ -36,27 +33,6 @@
         <action
             android:id="@+id/action_registrationFragment_to_taskFragment"
             app:destination="@id/taskFragment" />
-        <action
-            android:id="@+id/action_registrationFragment_to_updateColorFragment"
-            app:destination="@id/updateColorFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/colorFragment"
-        android:name="com.wang.finalproject_calendar.ColorFragment"
-        android:label="fragment_color"
-        tools:layout="@layout/fragment_color" >
-        <action
-            android:id="@+id/action_colorFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updateColorFragment"
-        android:name="com.wang.finalproject_calendar.UpdateColorFragment"
-        android:label="fragment_update_color"
-        tools:layout="@layout/fragment_update_color" >
-        <action
-            android:id="@+id/action_updateColorFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
     </fragment>
 </navigation>
 
